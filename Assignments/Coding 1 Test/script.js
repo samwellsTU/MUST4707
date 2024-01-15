@@ -1,10 +1,5 @@
-const song = {
-  name: "heklkle",
-  artist: {
-    name: "Taylor Swift",
-    instrument: "banjo",
-  },
-  label: "New Focus",
-};
+//↓↓↓↓↓↓↓↓↓↓↓↓YOUR CODE goes below here↓↓↓↓↓↓↓↓↓↓↓↓
 
-export default song;
+//↑↑↑↑↑↑↑↑↑↑YOUR CODE goes above here↑↑↑↑↑↑↑↑↑↑
+//Do not edit below this comment!
+module.exports = song; //This allows for auto-testing on Git-Hub classroom.
