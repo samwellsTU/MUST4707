@@ -1,6 +1,6 @@
 # Computer Programming for Musicians
 ## Code Repository
-
+This is our code for this class
 ## Installing GitHub Desktop and Adding This Repository
 
 ### Step 1: Install GitHub Desktop
