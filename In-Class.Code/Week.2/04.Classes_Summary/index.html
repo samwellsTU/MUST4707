@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Title of the webpage -->
+  <title>Object Review - Week 2</title>
+
+  <!-- Importing the MyAwesomeClass and script JavaScript files -->
+  <!-- Ensure the 'src' paths match the location of your JavaScript files -->
+  <script type="module" src="MyAwesomeClass.js"></script>
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+<h1>Understanding JavaScript Classes</h1>
+<p>Welcome to our JavaScript class review!</p>
+<em>Explore the concepts through code examples.</em>
+
+<h2>Learning Goals:</h2>
+<ul>
+  <li>Understand that classes serve as blueprints for creating objects.</li>
+  <li>Learn how to define and instantiate classes.</li>
+  <li>Explore class constructors, properties, and methods.</li>
+  <li>Practice creating multiple instances from a class to see how each instance maintains its own state.</li>
+  <li>Observe how methods can interact with an object's properties and alter its state.</li>
+</ul>
+
+<h2>Summary:</h2>
+<p>In the accompanying JavaScript files, we define a class named <code>MyAwesomeClass</code> with properties like <code>name</code>, <code>flavor</code>, and <code>age</code>, and methods to interact with these properties. We then create multiple instances of this class in <code>script.js</code>, demonstrating the use of class constructors, methods, and the encapsulation of state within objects.</p>
+<h3>There are 5 parts of a <code>class</code> declaration</h3>
+<ol>
+  <li>Names your class <code>class MyNewClassName {</code></li>
+  <ul>
+    <li>
+      <em>note the opening curly brace</em>
+    </li>
+  </ul>
+  <li>Make the constructor <code>constructor(firstParam, secondParam)</code></li>
+  <li>Define Properties <code>{this.myProp1 = 43; this.myProp2 = "potato";}</code></li>
+  <li>Define methods <code>myFunc(param) {code and more code}</code></li>
+  <li>Close the first curly brace: <code>}</code></li>
+</ol>
+
+
+
+<h3>What to Look for in the Console:</h3>
+<ul>
+  <li>Instances of <code>MyAwesomeClass</code> being created with different initial values.</li>
+  <li>Use of methods to display or change properties of these instances.</li>
+  <li>The effect of method calls on the state of each object, visible through console output.</li>
+</ul>
+
+<p>Check your browser's developer console to see the output from the JavaScript files and witness the dynamic nature of object-oriented programming in action!</p>
+</body>
+</html>
