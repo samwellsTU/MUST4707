@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Basics: Variables, Scope, Let, and Const</title>
+  </head>
+  <body>
+    <h1>JavaScript Basics: Variables, Scope, Let, and Const</h1>
+
+    <h2>What are Variables?</h2>
+    <p>
+      Variables in JavaScript are like containers or boxes where you store data,
+      like numbers or text. You create a variable using special keywords, and
+      give it a name to use it later in your code.
+    </p>
+
+    <h2>What is Scope?</h2>
+    <p>
+      Scope is a concept in JavaScript that defines where variables and
+      functions are accessible. There are mainly two types of scope:
+    </p>
+    <ul>
+      <li>
+        <strong>Global Scope:</strong> Variables declared outside of all
+        functions are available everywhere in your code.
+      </li>
+      <li>
+        <strong>Local Scope:</strong> Variables declared within a function are
+        only accessible within that function.
+      </li>
+    </ul>
+
+    <h2>What is Block Scope?</h2>
+    <p>
+      Block scope, introduced in ES6, is a type of scope that confines variables
+      to the block where they are declared. A block is a set of curly braces
+      <code>{ }</code> in your code, like in <code>if</code> statements, loops,
+      etc. Variables declared with <code>let</code> and <code>const</code> are
+      bound to the block scope, meaning they can only be accessed within that
+      specific block.
+    </p>
+
+    <h2>Understanding <code>let</code></h2>
+    <p>
+      The <code>let</code> keyword is used to declare variables that are limited
+      to the scope of a block. This means you can have different variables with
+      the same name in different blocks without conflict.
+    </p>
+    <p>
+      Variables declared with <code>let</code> can have their values changed,
+      but they cannot be redeclared within the same scope.
+    </p>
+
+    <h2>Understanding <code>const</code></h2>
+    <p>
+      The <code>const</code> keyword is for declaring variables that should not
+      change after their initial assignment. Like <code>let</code>,
+      <code>const</code> is also limited to block scope, but it prevents
+      reassigning or redeclaring the variable.
+    </p>
+    <p>
+      Use <code>const</code> for values that you want to remain constant, but
+      remember that the properties of objects or the contents of arrays declared
+      with <code>const</code> can still be changed.
+    </p>
+
+    <h2>Summary</h2>
+    <p>
+      Understanding variables and scope is crucial in JavaScript. Block scope,
+      particularly with <code>let</code> and <code>const</code>, provides a more
+      secure and error-free way of managing your data. Remember, use
+      <code>let</code> for variables that may change and <code>const</code> for
+      those that should remain constant.
+    </p>
+
+    <p>Check the console for examples and further explanations.</p>
+
+    <script src="script.js"></script>
+  </body>
+</html>
