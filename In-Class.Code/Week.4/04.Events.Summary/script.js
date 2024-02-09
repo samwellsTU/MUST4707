@@ -16,7 +16,7 @@ const mySiteInteraction = function() {
     // Optional: Clear the input box after displaying the message
     userInput.value = '';
   });
-}
+};
 
 
 document.addEventListener('DOMContentLoaded', mySiteInteraction());
