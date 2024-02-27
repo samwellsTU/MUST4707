@@ -1,0 +1,41 @@
+<!doctype html>
+<!-- The doctype declaration above tells the web browser about the document type and version of HTML. -->
+
+<html>
+  <head>
+    <!-- The head section contains meta information, scripts, and links to external resources. -->
+    <title>WebMIDI IO</title>
+    <!-- The title tag sets the title of the web page as it appears in the browser tab. -->
+
+    <!-- This script tag links to the WebMidi.js library, enabling MIDI functionality in the web browser. -->
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+
+    <!-- This script tag links to the external JavaScript file that contains the logic for handling MIDI devices. -->
+    <script src="script.js" type="module"></script>
+  </head>
+  <body>
+    <!-- The body section contains the content of the web page. -->
+    <h1>Such good MIDI Fx</h1>
+    <!-- An h1 header that provides a title or a brief description of the page's purpose. -->
+
+    <div>
+      <!-- A division or a section in an HTML document, used here to group the input device selector. -->
+      <label for="dropdown-ins">Select a MIDI Input:</label>
+      <!-- The label tag defines a label for the select element below. The 'for' attribute specifies which form element the label is bound to. -->
+      <select id="dropdown-ins">
+        <!-- The select tag represents a drop-down list. The id attribute is used to identify the element in CSS and JavaScript. -->
+        <!-- Options for the drop-down list are dynamically added through the script.js file. -->
+      </select>
+    </div>
+
+    <div>
+      <!-- Another division for grouping the output device selector. -->
+      <label for="dropdown-outs">Select a MIDI Output:</label>
+      <!-- Similar to the input label, this defines a label for the MIDI output selector. -->
+      <select id="dropdown-outs">
+        <!-- This select element is for choosing a MIDI output device. -->
+        <!-- Like the input selector, options are added dynamically via script.js. -->
+      </select>
+    </div>
+  </body>
+</html>
