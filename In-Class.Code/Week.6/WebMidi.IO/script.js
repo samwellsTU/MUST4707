@@ -5,7 +5,7 @@ await WebMidi.enable();
 // Initialize variables to store the first MIDI input and output devices detected.
 // These devices can be used to send or receive MIDI messages.
 let myInput = WebMidi.inputs[0];
-let myOutput = WebMidi.outputs[0];
+let myOutput = WebMidi.outputs[0].channels[1];
 
 // Get the dropdown elements from the HTML document by their IDs.
 // These dropdowns will be used to display the MIDI input and output devices available.
@@ -23,6 +23,17 @@ WebMidi.inputs.forEach(function (input, num) {
 WebMidi.outputs.forEach(function (output, num) {
   dropOuts.innerHTML += `<option value=${num}>${output.name}</option>`;
 });
+
+// MIDI Processing Function
+const midiProcess = function (midiIN, transpose) {
+  let pitch = midiIN.not.number;
+
+  pitch += transpose;
+
+  let myNewNote = new Note(pitch, { rawAttack: 101 });
+
+  return myNewNote;
+};
 
 // Add an event listener for the 'change' event on the input devices dropdown.
 // This allows the script to react when the user selects a different MIDI input device.
@@ -44,7 +55,12 @@ dropIns.addEventListener("change", function () {
   myInput.addListener("noteon", function (someMIDI) {
     // When a note on event is received, send a note on message to the output device.
     // This can trigger a sound or action on the MIDI output device.
-    myOutput.sendNoteOn(someMIDI.note);
+
+    console.log(
+      `My not is ${someMIDI.note.identifier}, it is pitch ${someMIDI.note.number}, with a velocity of ${someMIDI.note.rawAttack}`
+    );
+
+    myOutput.sendNoteOn(midiProcess(someMIDI, 2));
   });
 
   myInput.addListener("noteoff", function (someMIDI) {
