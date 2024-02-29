@@ -1,0 +1,66 @@
+/*
+CSS (Cascading Style Sheets):
+a stylesheet language used to describe the presentation of a document written in HTML.
+CSS defines how elements on a web page should be displayed, covering layout, colors, 
+fonts, and more. It separates content from design, allowing for more flexibility and 
+control in the look and feel of websites. 
+
+CSS styles can be applied directly to HTML elements, embedded within the HTML document, 
+or stored in separate external files (like in this case). This modular approach enables 
+consistent styling across multiple pages, improving site maintenance and user experience.
+*/
+
+/* Basic styling for the body element */
+body {
+  font-family: Arial, sans-serif; /* Sets the font */
+  margin: 20px; /* Sets the outside margin of the body */
+  padding: 20px; /* Sets the inside padding of the body */
+  background-color: lightgray; /* Uses a default color name */
+}
+
+/* Styling for headings */
+h1,
+h2 {
+  color: black; /* Uses the default color name */
+}
+
+/* Styling for h3 to h6 to demonstrate the use of different colors */
+h3 {
+  color: navy;
+}
+h4 {
+  color: olive;
+}
+h5 {
+  color: maroon;
+}
+h6 {
+  color: teal;
+}
+
+/* Styling for labels */
+label {
+  margin-top: 10px; /* Adds space above labels */
+  color: darkgreen; /* Uses a default color name */
+}
+
+/* Common styling for input elements, select dropdown, and button to add spacing and block display */
+input,
+select,
+button {
+  margin-top: 5px;
+  margin-bottom: 10px;
+  display: block; /* Elements appear on a new line */
+  border: 1px solid gray; /* Adds a border with a default color name */
+}
+
+/* Additional style for the button to make it more noticeable */
+button {
+  background-color: lightblue; /* Uses a default color name */
+  color: black; /* Ensures text is readable */
+}
+
+/* Style for paragraphs to differentiate from other text */
+p {
+  color: darkslategray; /* Uses a default color name */
+}

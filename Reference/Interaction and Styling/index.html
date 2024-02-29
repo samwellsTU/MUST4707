@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Metadata and links to CSS -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic HTML Tutorial</title>
+    <!-- Link to the external CSS file -->
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <!-- Main heading -->
+    <h1>Basic HTML Tutorial</h1>
+    <!-- Paragraph with explanation -->
+    <p>
+      This is a paragraph. Paragraphs are defined with the
+      <code>&lt;p&gt;</code> tag.
+    </p>
+    <!-- Section for headings -->
+    <h2>Headings</h2>
+    <p>
+      Headings are used to structure your content hierarchically. There are six
+      levels of headings in HTML:
+    </p>
+    <!-- Example of each heading level -->
+    <h1>H1: Main heading, highest level</h1>
+    <p>
+      The H1 tag is typically used for the main title of the page. It's the
+      highest level heading and should be used for main headings only.
+    </p>
+    <h2>H2: Used for major section headings</h2>
+    <p>
+      H2 tags are used for major sections of your page. They serve as
+      subheadings to the H1 tag and help organize content into manageable
+      sections.
+    </p>
+    <h3>H3: Subsections under H2 headings</h3>
+    <p>
+      Use H3 tags for subsections within an H2 section. They help further
+      organize content that falls under the same major section.
+    </p>
+    <h4>H4: Further subsections or points under H3</h4>
+    <p>
+      H4 tags are used for further dividing sections under H3 headings, ideal
+      for topics that require a more detailed level of hierarchy.
+    </p>
+    <h5>H5: Detail under H4 headings</h5>
+    <p>
+      H5 tags are used for detailed points under an H4 section. They are less
+      commonly used but are helpful for deep content structure.
+    </p>
+    <h6>H6: The lowest level heading</h6>
+    <p>
+      H6 tags are used for the lowest level headings. They can be used for minor
+      headings under H5 or for footnotes.
+    </p>
+
+    <!-- 
+      Here are all of the types you can use with an <input> element
+
+        <input type="text"> for example
+
+        button: A clickable button, with no default behavior.
+        checkbox: A checkbox allowing single values to be selected/deselected.
+        color: A control for specifying a color; a color picker.
+        date: Allows the user to select a date (year, month, and day, with no time).
+        datetime-local: Allows the user to select a date and time, with no time zone.
+        email: A field for editing an email address.
+        file: A control that lets the user select one or more files to upload to the server.
+        hidden: An invisible control that carries a fixed value to be sent with the form it is part of.
+        image: A graphical submit button, typically displaying an image defined by the src attribute.
+        month: Allows the user to select a month and year.
+        number: A control for entering a number.
+        password: A single-line text field whose value is obscured. Used for passwords.
+        radio: A radio button, allowing a single value to be selected out of multiple choices with the same name attribute.
+        range: A control for entering a number whose exact value is not important.
+        reset: A button that resets the contents of the form to default values.
+        search: A single-line text field for entering search strings; line-breaks are automatically removed from the input value.
+        submit: A button that submits the form.
+        tel: A control for entering a telephone number; line-breaks are automatically removed, but no other syntax is enforced.
+        text: The default type; a single-line text field. Line-breaks are automatically removed from the input value.
+        time: Allows the user to select a time (hour, minute, second, fractional second) with no time zone.
+        url: A field for entering a URL; line-breaks are automatically removed and some browsers might add "http://" if the user omits it.
+        week: Allows the user to select a week and year. 
+
+-->
+    <!-- Section for input elements -->
+    <h2>Input Elements</h2>
+    <!-- Text input field -->
+    <label for="text-input">Text Input:</label>
+    <input type="text" id="text-input" name="text-input" />
+
+    <!-- Range slider input -->
+    <br />
+    <label for="range-slider">Slider:</label>
+    <input
+      type="range"
+      id="range-slider"
+      name="range-slider"
+      min="1"
+      max="100"
+    />
+
+    <!-- Button -->
+    <br />
+    <button id="alert-button">Click Me!</button>
+
+    <!-- Dropdown menu -->
+    <br />
+    <label for="dropdown-menu">Dropdown Menu:</label>
+    <select id="dropdown-menu" name="dropdown-menu">
+      <option value="Option 1">Option 1</option>
+      <option value="Option 2">Option 2</option>
+      <option value="Option 3">Option 3</option>
+    </select>
+
+    <!-- New section for tables -->
+    <h2>Tables</h2>
+    <p>
+      Tables are used to organize data in rows and columns. Here is a simple
+      example:
+    </p>
+    <!-- Creating a table with headers and rows -->
+    <table border="1">
+      <!-- Adds a border to the table for visibility -->
+      <tr>
+        <!-- Table row -->
+        <th>Header 1</th>
+        <!-- Table header -->
+        <th>Header 2</th>
+        <th>Header 3</th>
+      </tr>
+      <tr>
+        <!-- Another table row -->
+        <td>Data 1</td>
+        <!-- Table data cell -->
+        <td>Data 2</td>
+        <td>Data 3</td>
+      </tr>
+      <tr>
+        <td>Data 4</td>
+        <td>Data 5</td>
+        <td>Data 6</td>
+      </tr>
+    </table>
+
+    <!-- Link to the external JavaScript file -->
+    <script src="script.js"></script>
+  </body>
+</html>

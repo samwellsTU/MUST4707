@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JavaScript Event Listeners Demo</title>
+    <style>
+      .event-demo {
+        margin-bottom: 20px;
+        padding: 10px;
+        border: 1px solid #ccc;
+        background-color: #f9f9f9;
+      }
+      input,
+      button,
+      textarea {
+        margin-top: 5px;
+      }
+      #scroll-demo {
+        height: 100px;
+        overflow: auto;
+      }
+      #resize-demo {
+        background-color: #ddd;
+        padding: 10px;
+        margin-top: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>JavaScript Event Listeners Demo</h1>
+
+    <div class="event-demo" id="click-demo">
+      <h2>Click</h2>
+      <p>Triggered when an element is clicked.</p>
+      <button>Click Me</button>
+    </div>
+
+    <div class="event-demo" id="mouseover-demo">
+      <h2>Mouseover</h2>
+      <p>Triggered when the mouse pointer is moved onto an element.</p>
+      <div>Hover Over Me</div>
+    </div>
+
+    <div class="event-demo" id="keydown-demo">
+      <h2>Keydown</h2>
+      <p>Triggered when a key is pressed down.</p>
+      <input type="text" placeholder="Press any key" />
+    </div>
+
+    <div class="event-demo" id="input-demo">
+      <h2>Input</h2>
+      <p>
+        Occurs immediately after the value of an input element has changed. Look
+        in the console!!
+      </p>
+      <input type="text" placeholder="Type something" />
+    </div>
+
+    <div class="event-demo" id="scroll-demo">
+      <h2>Scroll</h2>
+      <p>Triggered when the user scrolls in the specified element.</p>
+      <div>
+        Scroll inside this box.<br />Keep going...<br />Almost there...<br />A
+        bit more...<br />You did it!
+      </div>
+    </div>
+
+    <div class="event-demo" id="resize-demo">
+      <h2>Resize</h2>
+      <p>Resize the browser window to trigger the event.</p>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
