@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Title of the webpage -->
+    <title>Scheulding MIDI Notes</title>
+
+    <!-- Importing WebMidi library for handling MIDI in JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+
+    <!-- Importing the  script JavaScript files as modules -->
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <h1>Scheduling MIDI Notes</h1>
+    <div>
+      <!-- Another division for grouping the output device selector. -->
+      <label for="dropdown-outs">Select a MIDI Output:</label>
+      <!-- Similar to the input label, this defines a label for the MIDI output selector. -->
+      <select id="dropdown-outs">
+        <!-- This select element is for choosing a MIDI output device. -->
+        <!-- Like the input selector, options are added dynamically via script.js. -->
+      </select>
+    </div>
+    <button id="play">Play!</button>
+  </body>
+</html>
