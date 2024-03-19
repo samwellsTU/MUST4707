@@ -7,7 +7,7 @@ graph TD
     B -->|Manages MIDI I/O| E[MIDI Input Dropdown]
     B -->|Manages MIDI I/O| F[MIDI Output Dropdown]
     
-    C -->|Generates Arpeggios With| G[Adjustable Parameters]
+    C -->|Generates Arpeggios With| G[HTML Page: Adjustable Parameters]
     
     D -->|Initial Setup For| E
     D -->|Initial Setup For| F
@@ -17,6 +17,11 @@ graph TD
     G -->|User Adjusts| I[Subdivision]
     G -->|User Adjusts| J[Transposition]
     G -->|User Adjusts| K[Note Length]
+
+    H --> C
+I --> C
+J --> C
+K --> C
     
     E -.->|User Selection Goes To| C
     F -.->|Outputs Through| C
