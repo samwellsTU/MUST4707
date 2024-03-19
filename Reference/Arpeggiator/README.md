@@ -1,24 +1,24 @@
 ```mermaid
 graph TD
-    A[HTML Page: Arpeggiator Interface] --> B[WebMidi Library]
+    A[HTML Page: Arpeggiator Interface] -->|Uses| B[WebMidi Library]
     A -->|Loads| C[Arpeggiator.js]
     A -->|Loads| D[script.js]
     
-    B -->|Handles| E[MIDI Input Dropdown]
-    B -->|Handles| F[MIDI Output Dropdown]
+    B -->|Manages MIDI I/O| E[MIDI Input Dropdown]
+    B -->|Manages MIDI I/O| F[MIDI Output Dropdown]
     
-    C -->|Generates Arpeggios| G[Adjustable Parameters]
+    C -->|Generates Arpeggios With| G[Adjustable Parameters]
     
-    D -->|Initial Setup| E
-    D -->|Initial Setup| F
-    D -->|Initial Setup| G
+    D -->|Initial Setup For| E
+    D -->|Initial Setup For| F
+    D -->|Links UI To| G
     
-    G -->|User Can Adjust| H[Tempo (BPM)]
-    G -->|User Can Adjust| I[Subdivision]
-    G -->|User Can Adjust| J[Transposition]
-    G -->|User Can Adjust| K[Note Length]
+    G -->|User Adjusts| H[Tempo (BPM)]
+    G -->|User Adjusts| I[Subdivision]
+    G -->|User Adjusts| J[Transposition]
+    G -->|User Adjusts| K[Note Length]
     
-    E -.->|User Chooses| C
-    F -.->|For Output| C
+    E -.->|User Selection Goes To| C
+    F -.->|Outputs Through| C
 
 ```
