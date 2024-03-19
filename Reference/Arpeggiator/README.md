@@ -18,10 +18,6 @@ graph TD
     G -->|User Adjusts| J[Transposition]
     G -->|User Adjusts| K[Note Length]
 
-    H --> C
-I --> C
-J --> C
-K --> C
     
     E -.->|User Selection Goes To| C
     F -.->|Outputs Through| C
