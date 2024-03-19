@@ -1,3 +1,4 @@
+```mermaid
 graph TD
 A[Web Page: Arpeggiator] -->|Uses| B(WebMidi Library)
 A -->|Controls| C[Arpeggiator.js]
@@ -21,3 +22,4 @@ A -->|Controls| D[script.js]
     F -->|MIDI Output Commands| C
 
     C -.->|Sends MIDI Notes| F
+```
