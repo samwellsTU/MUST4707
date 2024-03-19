@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Title of the webpage -->
+    <title>Arpeggiator</title>
+
+    <!-- Importing WebMidi library for handling MIDI in JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+
+    <!-- Importing the Arpeggiator and script JavaScript files as modules -->
+    <script type="module" src="Arpeggiator.js"></script>
+    <script type="module" src="script.js"></script>
+  </head>
+  <body>
+    <h1>Arpeggiator</h1>
+    <h2>MIDI I/O</h2>
+
+    <!-- MIDI Input selection dropdown -->
+    <div>
+      <label for="dropdown-ins">Select an Input:</label>
+      <select id="dropdown-ins">
+        <!-- Options will be populated dynamically -->
+      </select>
+    </div>
+
+    <!-- MIDI Output selection dropdown -->
+    <div>
+      <label for="dropdown-outs">Select an Output:</label>
+      <select id="dropdown-outs">
+        <!-- Options will be populated dynamically -->
+      </select>
+    </div>
+
+    <hr />
+
+    <h2>Parameters</h2>
+
+    <!-- BPM (Beats Per Minute) setting -->
+    <div>
+      <label for="bpmSet" id="bpmValue">Tempo: 120 bpm</label>
+      <input type="range" id="bpmSet" min="30" max="250" value="120" />
+    </div>
+
+    <!-- Subdivision setting for rhythmic patterns -->
+    <div>
+      <label for="subdiv">Subdiv:</label>
+      <select id="subdiv">
+        <!-- Options will be populated dynamically -->
+      </select>
+    </div>
+
+    <!-- Transposition setting for key changes -->
+    <div>
+      <label for="transposer" id="transposeValue"
+        >Transpostion: 0 semitones</label
+      >
+      <input type="range" id="transposer" min="-12" max="12" value="0" />
+    </div>
+
+    <!-- Note Length setting -->
+    <div>
+      <label for="noteLength" id="noteLengthValue">Note Length: 100%</label>
+      <input type="range" id="noteLength" min="1" max="400" value="100" />
+    </div>
+  </body>
+</html>
