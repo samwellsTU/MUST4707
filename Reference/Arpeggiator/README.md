@@ -13,7 +13,7 @@ graph TD
     D -->|Initial Setup For| F
     D -->|Links UI To| G
     
-    G -->|User Adjusts| H[Tempo (BPM)]
+    G -->|User Adjusts| H[Tempo BPM]
     G -->|User Adjusts| I[Subdivision]
     G -->|User Adjusts| J[Transposition]
     G -->|User Adjusts| K[Note Length]
