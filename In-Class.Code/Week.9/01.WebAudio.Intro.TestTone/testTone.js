@@ -1,4 +1,4 @@
-const myAudio = new AudioContext();
+ const myAudio = new AudioContext();
 let oscillator = null;
 const startButton = document.getElementById("start");
 const stopButton = document.getElementById("stop");
