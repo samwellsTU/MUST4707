@@ -70,7 +70,7 @@ class Arpeggiator {
     };
     this.arpIterator = 0;
     this.arpNotes = new Array();
-    this.playNote = this.playNote.bind(this);
+    z
   }
 
   /**
