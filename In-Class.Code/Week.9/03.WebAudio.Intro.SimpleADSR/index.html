@@ -1,21 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>WebAudio Intro - ADSR</title>
-  <script src="adsrTone.js" type="module"></script>
-</head>
-<body>
-<h1>ADSR Control</h1>
-<div>
-    <button id="start">Start</button>
-    <button id="stop">Stop</button>
-</div>
-<div>
-<label for="gainSlider">Gain</label>
-    <input id="gainSlider" type="range" min="-70" max="12" value="-70">
-<label for="gainSlider" id="gainDisplay">-70 dBFS</label>
-   </div>
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+    <script src="adsrTone.js" type="module"></script>
+    <script src="MusicTools.js" type="module"></script>
+  </head>
+  <body>
+    <h1>ADSR Control</h1>
+    <div>
+      <label for="dropdown-ins">Select a MIDI Input:</label>
+      <select id="dropdown-ins"></select>
+    </div>
 
-</body>
+    <div>
+      <button id="start">Start</button>
+      <button id="stop">Stop</button>
+    </div>
+    <div>
+      <label for="gainSlider">Gain</label>
+      <input id="gainSlider" type="range" min="-70" max="12" value="-70" />
+      <label for="gainSlider" id="gainDisplay">-70 dBFS</label>
+    </div>
+  </body>
 </html>
