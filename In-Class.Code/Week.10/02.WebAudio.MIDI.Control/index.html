@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>WebAudio Intro - MIDI Control</title>
+    <!-- This script tag links to the WebMidi.js library, enabling MIDI functionality in the web browser. -->
+    <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
+  <script src="midiControl.js" type="module"></script>
+</head>
+<body>
+<h1>ADSR Control</h1>
+<div>
+    <!-- A division or a section in an HTML document, used here to group the input device selector. -->
+    <label for="dropdown-ins">Select a MIDI Input:</label>
+    <!-- The label tag defines a label for the select element below. The 'for' attribute specifies which form element the label is bound to. -->
+    <select id="dropdown-ins">
+        <!-- The select tag represents a drop-down list. The id attribute is used to identify the element in CSS and JavaScript. -->
+        <!-- Options for the drop-down list are dynamically added through the script.js file. -->
+    </select>
+</div>
+
+<div>
+<label for="gainSlider">Gain</label>
+    <input id="gainSlider" type="range" min="-70" max="12" value="-70">
+<label for="gainSlider" id="gainDisplay">-70 dBFS</label>
+   </div>
+
+</body>
+</html>

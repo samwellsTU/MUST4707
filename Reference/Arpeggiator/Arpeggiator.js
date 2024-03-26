@@ -59,7 +59,7 @@ class Arpeggiator {
       "16th Triplet": 1 / 6,
       "16th": 1 / 4,
       "8th Triplet": 1 / 3,
-      "Dotted 8th": 3 / 8,
+      "Dotted 16th": 3 / 8,
       "8th": 1 / 2,
       "quarter triplet": 2 / 3,
       "Dotted 8th": 3 / 4,
