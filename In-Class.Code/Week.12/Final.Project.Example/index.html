@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>My Synth/Fx Machine</h1>
+
+<h2>Inputs</h2>
+<div>
+    <h3>MIDI</h3>
+    <label for="dropIns">Select a MIDI Input: </label>
+    <select id="dropIns">
+<!--        dynamically populated-->
+    </select>
+</div>
+<div>
+    <h3>Audio Source</h3>
+    <form  id="inputSelect">
+        <input type="radio" id="micIn" value="0" name="inputs">
+        <label for="micIn">Microphone</label><br>
+
+        <input type="radio" id="oscIn" value="1" name="inputs">
+        <label for="oscIn">Sine Wave Synth</label><br>
+
+        <input type="radio" id="file" value="2" name="inputs">
+        <label for="file">File</label>
+        <button id="uploadFile">Upload File</button><br>
+        <button id="playFile">&#9658;</button><button id="stopFile">&#x23F9;</button><br>
+    </form>
+</div>
+<h2>Audio Fx</h2>
+<div>
+    <h3>Fx Select</h3>
+    <form  id="inputSelect">
+        <input type="radio" id="ringMod" value="0" name="fx">
+        <label for="ringMod">Ring Modulation</label><br>
+
+        <input type="radio" id="dist" value="1" name="fx">
+        <label for="dist">Distortion</label><br>
+
+        <input type="radio" id="delay" value="2" name="fx">
+        <label for="delay">Delay</label><br>
+    </form>
+</div>
+<h3>Ring Modulation</h3>
+<input type="range" />
+<h3>Distortion</h3>
+<input type="range" />
+<h3>Delay</h3>
+<input type="range" />
+<h2>Output</h2>
+<h3>Dry/Wet</h3>
+<input type="range" />
+<h3>Panner</h3>
+<input type="range" />
+<h3>Volume</h3>
+<input type="range" />
+</body>
+</html>
