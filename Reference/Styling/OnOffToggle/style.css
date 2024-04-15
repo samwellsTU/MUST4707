@@ -1,0 +1,13 @@
+/* the hash then id (#togButton) styles ALL elements with the id togButton */
+#togButton {
+  appearance: none;
+  background-color: #ff2e2e;
+  border: 2px solid #dcdcdc;
+  padding: 10px 20px;
+  border-radius: 20px;
+  outline: none;
+  cursor: pointer;
+}
+#togButton:checked {
+  background-color: #4caf50;
+}
