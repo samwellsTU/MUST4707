@@ -1,82 +1,89 @@
 /* General body and layout styles */
 body {
-    font-family: 'Arial', sans-serif;
-    background-color: #282c34;
-    color: white;
-    padding: 20px;
-    margin: 0;
-    line-height: 1.6;
+    font-family: 'Arial', sans-serif; /* Set the font to Arial for the entire webpage */
+background-color: #282c34; /* Set the body background color */
+color: white; /* Set the default text color to white */
+padding: 20px; /* Add padding to the entire body of the webpage */
+margin: 0; /* Remove default margin from the body */
+line-height: 1.6; /* Set line height for better readability */
 }
 
+/* Heading styles */
 h1, h2, h3 {
-    color: #61dafb;
+    color: #61dafb; /* Set the color of all headers (h1, h2, h3) to light blue */
 }
 
+/* Button styles */
 button {
-    background-color: #61dafb;
-    border: none;
-    color: #282c34;
-    padding: 10px 20px;
-    margin: 5px 0;
-    cursor: pointer;
-    border-radius: 5px;
-    font-size: 16px;
+    background-color: #61dafb; /* Set button's background color */
+border: none; /* Remove border from button */
+color: #282c34; /* Set button's text color */
+padding: 10px 20px; /* Add padding around the button text */
+margin: 5px 0; /* Add margin to the button */
+cursor: pointer; /* Change cursor to pointer on button hover */
+border-radius: 5px; /* Round the corners of the button */
+font-size: 16px; /* Set button text size */
 }
 
+/* Button hover effect to change its color */
 button:hover {
-    background-color: #4fa1d7;
+    background-color: #4fa1d7; /* Change the button's background color when hovered */
 }
 
-/* Styles for forms and inputs */
+/* Styles for form inputs */
 input[type="radio"], input[type="checkbox"] {
-    margin-right: 5px;
+    margin-right: 5px; /* Add margin to the right of radio and checkbox inputs */
 }
 
 input[type="range"] {
-    width: 100%;
-    cursor: pointer;
+    width: 100%; /* Set width of range input to fill its container */
+cursor: pointer; /* Change cursor to pointer when hovering over range input */
 }
 
 input[type="file"] {
-    border: 1px solid #ccc;
-    display: inline-block;
-    padding: 6px 12px;
-    cursor: pointer;
+    border: 1px solid #ccc; /* Add border to file input */
+display: inline-block; /* Display file input inline with other elements */
+padding: 6px 12px; /* Add padding to file input */
+cursor: pointer; /* Change cursor to pointer on file input hover */
 }
 
+/* Styles for select inputs */
 select {
-    background-color: #333;
-    color: white;
-    border: 1px solid #555;
-    padding: 5px;
-    font-size: 16px;
-    margin: 10px 0;
+    background-color: #333; /* Set background color for the select dropdown */
+color: white; /* Set text color for the select dropdown */
+border: 1px solid #555; /* Add border to the select dropdown */
+padding: 5px; /* Add padding to the select dropdown */
+font-size: 16px; /* Set font size for the select dropdown */
+margin: 10px 0; /* Add margin to the select dropdown */
 }
 
+/* Color for dropdown options */
 select option {
-    color: black;
+    color: black; /* Set text color for dropdown options */
 }
 
+/* Styles for labels */
 label {
-    margin-right: 20px;
+    margin-right: 20px; /* Add margin to the right of labels */
 }
 
-/* Container and division styles */
+/* Styles for div containers */
 div {
-    border: 1px solid #555;
-    padding: 15px;
-    border-radius: 8px;
-    margin-bottom: 20px;
+    border: 1px solid #555; /* Add border to divs */
+padding: 15px; /* Add padding to divs */
+border-radius: 8px; /* Round the corners of divs */
+margin-bottom: 20px; /* Add bottom margin to divs */
 }
 
+/* Remove top margin from h3 */
 h3 {
     margin-top: 0;
 }
 
-/* Display labels for audio controls */
+/* Styles for specific display labels */
 #ringModDisplay, #distDisplay {
-    display: inline-block;
-    width: 50px;
-    text-align: right;
-    margin-left: 10px;
+    display: inline-block; /* Display these elements inline */
+width: 50px; /* Set a fixed width */
+text-align: right; /* Align the text to the right */
+margin-left: 10px; /* Add left margin */
 }

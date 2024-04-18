@@ -1,75 +1,102 @@
+<!-- Document type declaration. It defines the type of the document and its version. -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta tag that specifies the character encoding for the HTML document -->
     <meta charset="UTF-8">
-    <title>Title</title>
-    <!-- This script tag links to the WebMidi.js library, enabling MIDI functionality in the web browser. -->
+    <!-- The HTML Title element (title) defines the title of the HTML document. It is shown in browser tab. -->
+    <title>Final Project Example</title>
+    <!-- The HTML Script element (script) to import external JavaScript library WebMidi.js which provides Web MIDI API for the web browser -->
     <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
-
+    <!-- The HTML Script element (script) to import external JavaScript file script.js -->
     <script src="script.js" type="module"></script>
+    <!-- The HTML Link element (link) to import external CSS file style.css -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+<!-- Heading of the webpage -->
 <h1>My Synth/Fx Machine</h1>
+<!-- Button to trigger the start of the audio -->
 <button id="startAudio">Start Audio</button>
 <h2>Inputs</h2>
 <div>
+    <!-- Heading for MIDI Input section -->
     <h3>MIDI</h3>
+    <!-- Label for MIDI Input dropdown  -->
     <label for="dropIns">Select a MIDI Input: </label>
+    <!-- Dropdown for MIDI inputs. It will be dynamically populated with the available MIDI inputs. -->
     <select id="dropIns">
-<!--        dynamically populated-->
+        <!-- Dynamically populated options -->
     </select>
 </div>
 <div>
+    <!-- Heading for Audio Source section -->
     <h3>Audio Source</h3>
     <form  id="inputSelect">
+        <!-- Radio button option to select Microphone as the audio source -->
         <input id="micSelect" type="radio" id="micIn" value="0" name="inputs">
         <label for="micIn">Microphone</label><br>
-
+        <!-- Radio button option to select Sine Wave Synth as the audio source -->
         <input id="synthSelect" type="radio" id="oscIn" value="1" name="inputs">
         <label for="oscIn">Sine Wave Synth</label><br>
-
+        <!-- Radio button option to select an audio file as the audio source -->
         <input id="fileSelect" type="radio" id="file" value="2" name="inputs">
         <label for="file">File</label>
+        <!-- File input for the audio file. Only accepts audio file types -->
         <input type="file" id="uploadFile"  accept="audio/*"><br>
+        <!-- Buttons to play and stop the uploaded audio file. -->
         <button id="playFile">&#9658;</button><button id="stopFile">&#x23F9;</button><br>
     </form>
 </div>
+<!-- Section for the Audio Effects -->
 <h2>Audio Fx</h2>
 <div>
+    <!-- Heading for the Audio Effects selection section -->
     <h3>Fx Select</h3>
     <form  id="inputSelect">
+        <!-- Checkbox option for Ring Modulation effect -->
         <input type="checkbox" id="ringMod" >
         <label for="ringMod">Ring Modulation</label><br>
-
+        <!-- Checkbox option for Distortion effect -->
         <input type="checkbox" id="dist"  >
         <label for="dist">Distortion</label><br>
-
+        <!-- Checkbox option for Delay effect -->
         <input type="checkbox" id="delay" >
         <label for="delay">Delay</label><br>
     </form>
 </div>
+<!-- Section for adjusting the Ring Modulation effect -->
 <h3>Ring Modulation</h3>
+<!-- Slider for the Ring Modulation frequency -->
 <input id="ringModFreq" type="range" min="0" max="1000" value="1" step="0.1">
 <label id="ringModDisplay" for="ringModFreq">0.1 Hz</label>
+<!-- Section for adjusting the Distortion effect -->
 <h3>Distortion</h3>
+<!-- Slider for the Distortion drive -->
 <input id="drive" type="range" min="0" max="100" value="0" step="0.1" />
 <label id="distDisplay" for="drive">0.0 dB</label>
+<!-- Section for adjusting the Delay effect -->
 <h3>Delay</h3>
 <h4>Time</h4>
+<!-- Slider for the Delay Time -->
 <input id="delayTime" type="range" min="0" max="5" value="0.25" step="0.01">
 <label id="delayTimeDisplay" for="delayTime">0.25 sec</label>
 <h4>Feedback</h4>
+<!-- Slider for the Delay Feedback -->
 <input id="fb" type="range" min="0" max="1" value="0.25" step="0.01">
 <label id="fbDisplay" for="fb">25%</label>
+<!-- Section for Output -->
 <h2>Output</h2>
 <h3>Dry/Wet</h3>
+<!-- Slider for Dry/Wet mix -->
 <input id="dryWet" type="range" min="0" max="1" value="0.55" step="0.01">
 <label id="dryWetDisplay" for="dryWet">50%</label>
 <h3>Panner</h3>
+<!-- Slider for the Pan position -->
 <input id="pan" type="range"   min="-1" max="1" value="0." step="0.01"/>
 <label id="panDisplay" for="pan">C</label>
 <h3>Volume</h3>
+<!-- Slider for the output volume -->
 <input id="vol" type="range" min="-70" max="6" value="0.1" step="0.1">
 <label id="volDisplay" for="dryWet">0.0 dBFS</label>
 </body>
