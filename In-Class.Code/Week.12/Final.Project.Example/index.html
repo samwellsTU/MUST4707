@@ -7,6 +7,7 @@
     <script src="https://cdn.jsdelivr.net/npm/webmidi@latest/dist/iife/webmidi.iife.js"></script>
 
     <script src="script.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 <h1>My Synth/Fx Machine</h1>
@@ -52,16 +53,24 @@
 <input id="ringModFreq" type="range" min="0" max="1000" value="1" step="0.1">
 <label id="ringModDisplay" for="ringModFreq">0.1 Hz</label>
 <h3>Distortion</h3>
-<input id="drive" type="range" min="0" max="400" value="0" step="0.1" />
+<input id="drive" type="range" min="0" max="100" value="0" step="0.1" />
 <label id="distDisplay" for="drive">0.0 dB</label>
 <h3>Delay</h3>
-<input type="range" />
+<h4>Time</h4>
+<input id="delayTime" type="range" min="0" max="5" value="0.25" step="0.01">
+<label id="delayTimeDisplay" for="delayTime">0.25 sec</label>
+<h4>Feedback</h4>
+<input id="fb" type="range" min="0" max="1" value="0.25" step="0.01">
+<label id="fbDisplay" for="fb">25%</label>
 <h2>Output</h2>
 <h3>Dry/Wet</h3>
-<input type="range" />
+<input id="dryWet" type="range" min="0" max="1" value="0.55" step="0.01">
+<label id="dryWetDisplay" for="dryWet">50%</label>
 <h3>Panner</h3>
-<input type="range" />
+<input id="pan" type="range"   min="-1" max="1" value="0." step="0.01"/>
+<label id="panDisplay" for="pan">C</label>
 <h3>Volume</h3>
-<input type="range" />
+<input id="vol" type="range" min="-70" max="6" value="0.1" step="0.1">
+<label id="volDisplay" for="dryWet">0.0 dBFS</label>
 </body>
 </html>

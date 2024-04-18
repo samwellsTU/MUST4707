@@ -1,0 +1,34 @@
+<!-- Document type declaration. It defines the type of the document and its version. -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Meta tag that specifies the character encoding for the HTML document -->
+    <meta charset="UTF-8">
+    <!-- The HTML Title element (title) defines the title of the HTML document. It is shown in browser tab. -->
+    <title>Buffer Analysis</title>
+    <!-- The HTML Script element (script) is used to embed JavaScript within the HTML document. -->
+    <!-- In this case, it is including an external JavaScript file named 'bufferThings.js'. 'Type' attribute is used to indicate the MIME type of the script. -->
+    <script src="bufferThings.js" type="module"></script>
+</head>
+<body>
+<!-- Heading for the webpage -->
+<h1>Audio File Analysis</h1>
+<!-- Sub-heading for the file upload section -->
+<h2>Upload an Audio File Here</h2>
+<!-- File input that only accepts audio files. The uploaded file will be able to picked up by JavaScript using this id. -->
+<input type="file" id="uploadFile"  accept="audio/*">
+<br>
+<!-- Button to trigger the load file event. The file chosen in 'uploadFile' input can be loaded with this button.-->
+<button id="loadFile">Load</button>
+<!-- Sub-heading for the Analysis section -->
+<h2>Analysis</h2>
+<!-- Button to trigger the calculation of RMS (Root Mean Square) value of the loaded audio file. -->
+<button id="rms">RMS</button>
+<!-- HTML paragraph to display the RMS value that is calculated. -->
+<p id="rmsresult"></p>
+<!-- Button to trigger the calculation of Peak Amplitude of the loaded audio file. -->
+<button id="peak">Peak Amplitude</button>
+<!-- HTML paragraph to display the Peak Amplitude that is calculated. -->
+<p id="peakresult"></p>
+</body>
+</html>

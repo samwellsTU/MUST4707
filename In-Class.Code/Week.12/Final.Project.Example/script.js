@@ -5,15 +5,15 @@ import {musicTools} from "./MusicTools.js";
 await WebMidi.enable();
 const audCtx = new (AudioContext || webkit.AudioContext)();
 
+let myInput = WebMidi.inputs[0]
+
 //create Nodes
 //microphone input
 let micSource = null; //empty variable to be populated later
 let fileBuffer = null;
 
 
-//oscillator
-const osc = audCtx.createOscillator()
-const adsr = audCtx.createGain()
+
 
 
 
@@ -29,7 +29,7 @@ const modulationSig = audCtx.createOscillator()
 // const modulationGain = audCtx.createGain();
 const ringMod = audCtx.createGain();
 const distortion = audCtx.createWaveShaper()
-const delay = audCtx.createDelay()
+const delay = audCtx.createDelay(5.0)
 const feedback = audCtx.createGain();
 
 
@@ -49,8 +49,19 @@ modulationSig.start()
 
 
 //initial param
-delay.delayTime.setValueAtTime(250, audCtx.currentTime)
-feedback.gain.setValueAtTime(0, audCtx.currentTime)
+delay.delayTime.setValueAtTime(0.25, audCtx.currentTime)
+feedback.gain.setValueAtTime(0.25, audCtx.currentTime)
+
+// Map to track active oscillators
+const activeVoices = new Map();
+
+// ADSR parameters
+const attackTime = 0.02; // Attack time in seconds
+const decayTime = 0.04; // Decay time in seconds
+const sustainLevel = 0.7; // Sustain level (0 to 1)
+const releaseTime = 2; // Release time in seconds
+
+
 
 // Get the dropdown elements from the HTML document by their IDs.
 // These dropdowns will be used to display the MIDI input and output devices available.
@@ -82,29 +93,64 @@ dropIns.addEventListener("change", function () {
     myInput.addListener("noteon", function (someMIDI) {
         // When a note on event is received, send a note on message to the output device.
         // This can trigger a sound or action on the MIDI output device.
-        osc.frequency.setValueAtTime(musicTools.midiPitchToFrequency(someMIDI.note.number), audCtx.currentTime)
-        startTone()
+        // osc.frequency.setValueAtTime(musicTools.midiPitchToFrequency(someMIDI.note.number), audCtx.currentTime)
+
+        startTone(someMIDI.note)
     });
     myInput.addListener("noteoff", function (someMIDI) {
         // Similarly, when a note off event is received, send a note off message to the output device.
         // This signals the end of a note being played.
-        stopTone()
+        stopTone(someMIDI.note)
     });
 });
 
 
 
- const startTone = function() {
+ const startTone = function(note) {
 
-        adsr.gain.linearRampToValueAtTime(1.0, myAudio.currentTime + 0.1)
+     const oscillator = audCtx.createOscillator();
+     const gainNode = audCtx.createGain();
+     gainNode.gain.value = 0;
+
+     // Set the frequency based on the note (simplified)
+     console.log(musicTools.midiPitchToFrequency(note.number))
+     oscillator.frequency.setValueAtTime(musicTools.midiPitchToFrequency(note.number), audCtx.currentTime);
+     oscillator.type = 'sine';
+
+     // Connect the oscillator to gain and gain to the context
+     oscillator.connect(gainNode);
+     gainNode.connect(inputSwitch);
+
+     // Start the oscillator
+     oscillator.start();
+     gainNode.gain.linearRampToValueAtTime(note.attack, audCtx.currentTime + attackTime);
+     gainNode.gain.linearRampToValueAtTime(note.attack*sustainLevel, audCtx.currentTime + attackTime + decayTime);
+     setTimeout(()=> {
+         console.log(`gain: ${gainNode.gain.value}`)
+     }, (attackTime + decayTime) * 1000);
+
+     // Add the oscillator and gainNode to the map
+     activeVoices.set(note.number, {oscillator, gainNode});
     }
 
-    const stopTone = function() {
-        // Log the current gain value of the ADSR node for debugging.
-        // console.log(adsrNode.gain.value)
+    const stopTone = function(note) {
+        const voice = activeVoices.get(note.number);
+        // console.log(activeVoices)
+        if (voice) {
+            // Fade out the note
+            console.log(`gain: ${voice.gainNode.gain.value}`)
+            voice.gainNode.gain.linearRampToValueAtTime(0., audCtx.currentTime + releaseTime);
 
-        // Ramp down the gain of the ADSR node to 0 over 2 seconds for the fade-out effect.
-        adsr.gain.linearRampToValueAtTime(0., myAudio.currentTime + 1.0)
+            // Stop the oscillator after the fade
+            setTimeout(() => {
+                voice.oscillator.stop();
+                voice.oscillator.disconnect();
+                activeVoices.delete(note.number);
+            }, (releaseTime+1)*1000);
+
+            // Remove from map
+
+        }
     }
 
 
@@ -142,7 +188,14 @@ const loadPlayFileIntoBuffer = function() {
     console.log("File load started");
 }
 
-
+/**
+ * Function to create a distortion effect for audio processing.
+ * This function uses the sigmoid curve to provide a smooth transition between levels,
+ * reducing the harshness of the clipping effect.
+ *
+ * @param {number} [amount=50] - The amount of distortion to apply. Higher values cause more distortion.
+ * @returns {Float32Array} A new Float32Array filled with computed values of the distortion curve.
+ */
 const makeDistortionCurve = function(amount) {
     const k = typeof amount === "number" ? amount : 50;
     const n_samples = 44100;
@@ -168,14 +221,26 @@ const makeDistortionCurve = function(amount) {
 
 
 
-
+/**
+ * Asynchronous function to select the microphone input.
+ *
+ * It disconnects any existing micSource connections, enables low latency (0.02s) audio from the microphone
+ * and connects the input from the micSource to the inputSwitch.
+ *
+ * Upon failure to access the microphone, it writes an error to the console.
+ *
+ * @returns {Promise<void>}
+ * @throws Will throw an error if unable to access the microphone.
+ */
 const selectMicInput = async function() {
   try {
       //to disconnect any micSource connections
       // if (!micSource){
       //     micSource.disconnect(inputSwitch)
       // }
-      const micInput = await navigator.mediaDevices.getUserMedia({ audio: true });
+
+      //latency
+      const micInput = await navigator.mediaDevices.getUserMedia({ audio: { latency: 0.02 } });
 
     micSource = audCtx.createMediaStreamSource(micInput);
     micSource.connect(inputSwitch)
@@ -199,7 +264,6 @@ document.getElementById("micSelect").addEventListener("change", function() {
 
 document.getElementById("synthSelect").addEventListener("change", function() {
     if (this.checked) {
-        adsr.connect(inputSwitch)
         micSource.disconnect()
         fileBuffer.disconnect()
     }
@@ -216,31 +280,30 @@ document.getElementById("fileSelect").addEventListener("change", function() {
 
 document.getElementById("ringMod").addEventListener("change", function() {
     if (this.checked) {
-        drySig.connect(ringMod)
+        inputSwitch.connect(ringMod)
         ringMod.connect(wetSig)
     } else {
-        drySig.disconnect(ringMod)
+        inputSwitch.disconnect(ringMod)
         ringMod.disconnect(wetSig)
     }
 })
 
 document.getElementById("dist").addEventListener("change", function() {
     if (this.checked) {
-
-        drySig.connect(distortion)
+        inputSwitch.connect(distortion)
         distortion.connect(wetSig)
     } else {
-        drySig.disconnect(distortion)
+        inputSwitch.disconnect(distortion)
         distortion.disconnect(wetSig)
     }
 })
 
 document.getElementById("delay").addEventListener("change", function() {
     if (this.checked) {
-        drySig.connect(delay)
+        inputSwitch.connect(delay)
         delay.connect(wetSig)
     } else {
-        drySig.disconnect(delay)
+        inputSwitch.disconnect(delay)
         delay.disconnect(wetSig)
     }
 })
@@ -266,9 +329,56 @@ document.getElementById("ringModFreq").addEventListener("input", function(){
 
 document.getElementById("drive").addEventListener("input", function(){
     distortion.curve = makeDistortionCurve(parseFloat(this.value))
-    document.getElementById("ringModDisplay").innerText = `${this.value} Hz`
+    document.getElementById("distDisplay").innerText = `${this.value}`
 })
 
+
+document.getElementById("delayTime").addEventListener("input", function(){
+    delay.delayTime.linearRampToValueAtTime(parseFloat(this.value), audCtx.currentTime+0.2)
+    document.getElementById("delayTimeDisplay").innerText = `${this.value} sec`
+})
+
+document.getElementById("fb").addEventListener("input", function(){
+    feedback.gain.linearRampToValueAtTime(parseFloat(this.value), audCtx.currentTime+0.02)
+    document.getElementById("fbDisplay").innerText = `${parseInt(this.value*100)}%`
+})
+
+// Add an 'input' event listener to the HTML element with id 'dryWet'
+document.getElementById("dryWet").addEventListener("input", function(){
+    // Adjust the gain (volume level) of the dry signal dynamically based on the current value of 'dryWet'
+    // The 'linearRampToValueAtTime' method smoothly changes the value of the gain to the target value
+    // over the specified duration (0.02 seconds from the current time in this case)
+    drySig.gain.linearRampToValueAtTime(parseFloat(1-this.value), audCtx.currentTime+0.02);
+
+    // Similarly, adjust the gain of the wet signal
+    wetSig.gain.linearRampToValueAtTime(parseFloat(this.value), audCtx.currentTime+0.02);
+
+    // Display the current value of 'dryWet' in a HTML element with id 'dryWetDisplay'
+    // The value is converted to an integer percentage format for easier readability
+    document.getElementById("dryWetDisplay").innerText = `${parseInt(this.value*100)}%`;
+});
+
+document.getElementById("pan").addEventListener("input", function(){
+    panner.pan.linearRampToValueAtTime(parseFloat(this.value), audCtx.currentTime+0.02)
+    let pos;
+    if (parseFloat(this.value)>0){
+        pos = `${parseInt(this.value*100)}R`
+    } else if (parseFloat(this.value)<0) {
+        pos =`${-1*parseInt(this.value * 100)}L`
+    } else {
+        pos = "C"
+    }
+    document.getElementById("panDisplay").innerText = `${pos}`
+})
+
+document.getElementById("vol").addEventListener("input", function(){
+
+    volume.gain.linearRampToValueAtTime(musicTools.dbfsToLinearAmplitude(parseFloat(this.value)), audCtx.currentTime+0.02)
+    document.getElementById("volDisplay").innerText = `${this.value} dBFS`
+})
+
+// Set up event listener for the "startAudio" button click event
 document.getElementById("startAudio").addEventListener("click", function(){
-    audCtx.resume()
+    // Resume (or start) the audio context when the button is clicked
+    audCtx.resume();
 })
